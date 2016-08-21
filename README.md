@@ -22,6 +22,10 @@ Move chartreuse.zsh-theme file to oh-my-zsh's theme folder: ~/oh-my-zsh/themes/c
 
 Go to your ~/.zshrc file and set ZSH_THEME="chartreuse".
 
+## iTerm 2 theme:
+
+Update your iTerm theme with this [fork](https://github.com/sergiokopplin/iterm)
+
 ---
 
 ### Inspiration:
