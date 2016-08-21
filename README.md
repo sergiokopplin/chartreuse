@@ -24,4 +24,10 @@ Go to your ~/.zshrc file and set ZSH_THEME="chartreuse".
 
 ---
 
+### Inspiration:
+
+Colors from [Dracula](https://draculatheme.com/) and zsh config from [Bullet Train](https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
+
+---
+
 [MIT](http://kopplin.mit-license.org/) License © Sérgio Kopplin
