@@ -1,23 +1,23 @@
-BULLETTRAIN_PROMPT_ORDER=(
+PROMPT_ORDER=(
   time
   dir
   git
 )
 
-BULLETTRAIN_PROMPT_CHAR="»"
+PROMPT_CHAR="$"
 
-BULLETTRAIN_TIME_BG=white
-BULLETTRAIN_TIME_FG=black
+TIME_BG=white
+TIME_FG=black
 
-BULLETTRAIN_DIR_BG=green
-BULLETTRAIN_DIR_FG=black
+DIR_BG=green
+DIR_FG=black
 
-BULLETTRAIN_GIT_COLORIZE_DIRTY=false
-BULLETTRAIN_GIT_COLORIZE_DIRTY_FG_COLOR=black
-BULLETTRAIN_GIT_COLORIZE_DIRTY_BG_COLOR=yellow
-BULLETTRAIN_GIT_BG=white
-BULLETTRAIN_GIT_FG=black
-BULLETTRAIN_GIT_PROMPT_CMD="\$(git_prompt_info)"
+GIT_COLORIZE_DIRTY=false
+GIT_COLORIZE_DIRTY_FG_COLOR=black
+GIT_COLORIZE_DIRTY_BG_COLOR=yellow
+GIT_BG=white
+GIT_FG=black
+GIT_PROMPT_CMD="\$(git_prompt_info)"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="\ue0a0 "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
@@ -85,13 +85,13 @@ prompt_git() {
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    if [[ $BULLETTRAIN_GIT_COLORIZE_DIRTY == true && -n $(git status --porcelain --ignore-submodules) ]]; then
-      BULLETTRAIN_GIT_BG=$BULLETTRAIN_GIT_COLORIZE_DIRTY_BG_COLOR
-      BULLETTRAIN_GIT_FG=$BULLETTRAIN_GIT_COLORIZE_DIRTY_FG_COLOR
+    if [[ $GIT_COLORIZE_DIRTY == true && -n $(git status --porcelain --ignore-submodules) ]]; then
+      GIT_BG=$GIT_COLORIZE_DIRTY_BG_COLOR
+      GIT_FG=$GIT_COLORIZE_DIRTY_FG_COLOR
     fi
-    prompt_segment $BULLETTRAIN_GIT_BG $BULLETTRAIN_GIT_FG
+    prompt_segment $GIT_BG $GIT_FG
 
-    eval git_prompt=${BULLETTRAIN_GIT_PROMPT_CMD}
+    eval git_prompt=${GIT_PROMPT_CMD}
     echo -n ${git_prompt}$(git_prompt_status)
   fi
 }
@@ -101,11 +101,11 @@ prompt_dir() {
   local dir=''
   dir="${dir}%4(c:...:)%3c"
 
-  prompt_segment $BULLETTRAIN_DIR_BG $BULLETTRAIN_DIR_FG $dir
+  prompt_segment $DIR_BG $DIR_FG $dir
 }
 
 prompt_time() {
-  prompt_segment $BULLETTRAIN_TIME_BG $BULLETTRAIN_TIME_FG %D{%T}
+  prompt_segment $TIME_BG $TIME_FG %D{%T}
 }
 
 # Prompt Character
@@ -113,8 +113,8 @@ prompt_char() {
   local bt_prompt_char
   bt_prompt_char=""
 
-  if [[ ${#BULLETTRAIN_PROMPT_CHAR} -eq 1 ]]; then
-    bt_prompt_char="${BULLETTRAIN_PROMPT_CHAR}"
+  if [[ ${#PROMPT_CHAR} -eq 1 ]]; then
+    bt_prompt_char="${PROMPT_CHAR}"
   fi
 
   bt_prompt_char="%(!.%F{red}#.%F{green}${bt_prompt_char}%f)"
@@ -129,7 +129,7 @@ prompt_char() {
 
 build_prompt() {
   RETVAL=$?
-  for segment in $BULLETTRAIN_PROMPT_ORDER
+  for segment in $PROMPT_ORDER
   do
     prompt_$segment
   done
