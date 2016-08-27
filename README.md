@@ -4,6 +4,9 @@
 
 ![Screenshot](./screen-shot.png)
 
+## Requirements:
+- Powerline compatible fonts like [Vim Powerline patched fonts](https://github.com/Lokaltog/powerline-fonts), [Input Mono](http://input.fontbureau.com/) or [Monoid](http://larsenwork.com/monoid/).
+
 ## Install using git:
 
 Clone the repo, then create a symbolik link to oh-my-zsh's theme folder:
